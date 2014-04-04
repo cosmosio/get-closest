@@ -37,10 +37,6 @@ function _getClosest(item, array, getDiff) {
 
 module.exports = {
 
-  custom: function closestCustom(item, array, comparator) {
-    return _getClosest(item, array, comparator);
-  },
-
   /**
    * Get the closest number in an array given a base number
    * Example: closest(30, [20, 0, 50, 29]) will return 3 as 29 is the closest item
@@ -78,6 +74,26 @@ module.exports = {
     return _getClosest(item, array, function (comparedItem, item) {
         return item - comparedItem;
     });
+  },
+
+  /**
+   * Get the closest item in an array given a base item and a comparator function
+   * Example (closest("lundi", ["mundi", "mardi"], getLevenshteinDistance)) will return 0 for "lundi"
+   * @param {*} item the base item
+   * @param {Array} array an array of items
+   * @param {Function} comparator a comparatof function to compare the items
+   *
+   * The function looks like:
+   *
+   * // comparedItem comes from the array
+   * // baseItem is the item to compare the others to
+   * // It returns a number
+   * function comparator(comparedItem, baseItem) {
+   *     return comparedItem - baseItem;
+   * }
+   */
+  custom: function closestCustom(item, array, comparator) {
+    return _getClosest(item, array, comparator);
   }
 
 };

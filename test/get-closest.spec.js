@@ -7,7 +7,8 @@
 */
 var sut = require("../index"),
 	chai = require("chai"),
-	expect = chai.expect;
+	expect = chai.expect,
+	Levenshtein = require("levenshtein");
 
 describe("Closest", function () {
 
@@ -86,5 +87,29 @@ describe("ClosestLower", function () {
 		expect(sut.lowerNumber(15.5, array)).to.equal(1);
 		expect(sut.lowerNumber(20, array)).to.equal(3);
 	});
+
+});
+
+describe("Custom", function () {
+
+		var days = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"];
+
+		function customComparator(comparedItem, baseItem) {
+			return new Levenshtein(comparedItem, baseItem).distance;
+		}
+
+		it("should be a function", function () {
+				expect(typeof sut.custom).to.equal("function");
+		});
+
+		it("should return the closest string given a levenshtein distance", function () {
+				expect(days[sut.custom("mundi", days, customComparator)]).to.equal("lundi");
+				expect(days[sut.custom("mardy", days, customComparator)]).to.equal("mardi");
+				expect(days[sut.custom("mercure", days, customComparator)]).to.equal("mercredi");
+				expect(days[sut.custom("jedi", days, customComparator)]).to.equal("jeudi");
+				expect(days[sut.custom("venfredi", days, customComparator)]).to.equal("vendredi");
+				expect(days[sut.custom("semadi", days, customComparator)]).to.equal("samedi");
+				expect(days[sut.custom("gromanche", days, customComparator)]).to.equal("dimanche");
+		});
 
 });
