@@ -31,11 +31,11 @@ And that you want to get the item that's the closest to the number 18, which wou
 getCloset.number(18, items); // 3, as items[3] === 20;
 ```
 
-If you want to find the closest to 17.5, as it's exactly between 15 and 20, `closest` will return the last item in the array that matches, which is 20 in our case.
+If you want to find the closest to 17.5, as it's exactly between 15 and 20, `number` will return the last number in the array that matches, which is 20 in our case.
 
 ```js
-getCloset.closest(17.5, items); // 3, as items[3] === 20
-getCloset.closest(35, items); // 4, as items[4] === 50
+getCloset.number(17.5, items); // 3, as items[3] === 20
+getCloset.number(35, items); // 4, as items[4] === 50
 ```
 
 If you're interested in getting the closest item that is greater, you can use `greaterNumber`:
@@ -44,7 +44,7 @@ If you're interested in getting the closest item that is greater, you can use `g
 tools.greaterNumber(1, items); // 1, as items[1] === 10
 ```
 
-If there's an exact match, it's returned. The last exact match will be returned too, to be consistent .closest.
+If there's an exact match, it's returned. The last exact match will be returned too, to be consistent .number.
 
 ```js
 getCloset.greaterNumber(0, items); // 0, as items[0] === 0 is an exact match.
