@@ -16,7 +16,7 @@ How to use
 Require get-closest:
 
 ```bash
-var getCloset = require("get-closest");
+var getClosest = require("get-closest");
 ```
 
 Let's say that you have an array of items such as:
@@ -28,14 +28,14 @@ var items = [0, 10, 15, 20, 50];
 And that you want to get the item that's the closest to the number 18, which would be 20 in our case:
 
 ```js
-getCloset.number(18, items); // 3, as items[3] === 20;
+getClosest.number(18, items); // 3, as items[3] === 20;
 ```
 
 If you want to find the closest to 17.5, as it's exactly between 15 and 20, `number` will return the last number in the array that matches, which is 20 in our case.
 
 ```js
-getCloset.number(17.5, items); // 3, as items[3] === 20
-getCloset.number(35, items); // 4, as items[4] === 50
+getClosest.number(17.5, items); // 3, as items[3] === 20
+getClosest.number(35, items); // 4, as items[4] === 50
 ```
 
 If you're interested in getting the closest item that is greater, you can use `greaterNumber`:
@@ -47,15 +47,15 @@ tools.greaterNumber(1, items); // 1, as items[1] === 10
 If there's an exact match, it's returned. The last exact match will be returned too, to be consistent .number.
 
 ```js
-getCloset.greaterNumber(0, items); // 0, as items[0] === 0 is an exact match.
+getClosest.greaterNumber(0, items); // 0, as items[0] === 0 is an exact match.
 ```
 
 Finally, you can get the closest item that is lower, using `lowerNumber`:
 
 ```js
-getCloset.lowerNumber(9, items); // 0, as items[0] === 0;
+getClosest.lowerNumber(9, items); // 0, as items[0] === 0;
 
-getCloset.lowerNumber(10, items); // 1, as items[1] === 10;
+getClosest.lowerNumber(10, items); // 1, as items[1] === 10;
 ```
 
 But you can also compare custom types by giving a custom comparison function, like string comparison with the levensthein distance:
@@ -74,7 +74,7 @@ function compareLevenshteinDistance(compareTo, baseItem) {
 
 var days = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"];
 
-getCloset.custom("mercure", days, compareLevenshteinDistance); // "mercredi"
+getClosest.custom("mercure", days, compareLevenshteinDistance); // "mercredi"
 ```
 
 LICENSE
