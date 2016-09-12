@@ -74,7 +74,7 @@ function compareLevenshteinDistance(compareTo, baseItem) {
 
 var days = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"];
 
-getClosest.custom("mercure", days, compareLevenshteinDistance); // "mercredi"
+getClosest.custom("mercure", days, compareLevenshteinDistance); // 2 (mercredi)
 ```
 
 LICENSE
