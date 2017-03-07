@@ -32,6 +32,9 @@
     "test": "mocha"
   },
   "main": "index.js",
+  "dependencies": {
+    "assert": "~1.4.1"
+  },
   "devDependencies": {
     "chai": "~1.9.1",
     "mocha": "~1.18.2",
