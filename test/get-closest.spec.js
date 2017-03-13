@@ -3,20 +3,15 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2014 Olivier Scherrer <pode.fr@gmail.com
+ * Copyright (c) 2014-2017 Olivier Scherrer <pode.fr@gmail.com
  */
 var sut = require("../index"),
     chai = require("chai"),
     expect = chai.expect,
     Levenshtein = require("levenshtein");
 
-describe("Closest", function () {
-
+describe("Given closest", function () {
     var array = [10, 15, 0, 20, 5];
-
-    it("should be a function", function () {
-        expect(typeof sut.number).to.equal("function");
-    });
 
     it("should return the closest item in an array", function () {
         expect(function () {
@@ -34,16 +29,10 @@ describe("Closest", function () {
         expect(sut.number(15.5, array)).to.equal(1);
         expect(sut.number(20, array)).to.equal(3);
     });
-
 });
 
 describe("ClosestGreater", function () {
-
     var array = [10, 15, 1, 20, 5];
-
-    it("should be a function", function () {
-        expect(typeof sut.greaterNumber).to.equal("function");
-    });
 
     it("should return the closest greater or equal item in an array", function () {
         expect(function () {
@@ -61,16 +50,10 @@ describe("ClosestGreater", function () {
         expect(sut.greaterNumber(15.5, array)).to.equal(3);
         expect(sut.greaterNumber(20, array)).to.equal(3);
     });
-
 });
 
 describe("ClosestLower", function () {
-
     var array = [10, 15, 0, 20, 5];
-
-    it("should be a function", function () {
-        expect(typeof sut.lowerNumber).to.equal("function");
-    });
 
     it("should return the closest lower or equal item in an array", function () {
         expect(function () {
@@ -87,20 +70,14 @@ describe("ClosestLower", function () {
         expect(sut.lowerNumber(15.5, array)).to.equal(1);
         expect(sut.lowerNumber(20, array)).to.equal(3);
     });
-
 });
 
 describe("Custom", function () {
-
     var days = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"];
 
     function customComparator(comparedItem, baseItem) {
         return new Levenshtein(comparedItem, baseItem).distance;
     }
-
-    it("should be a function", function () {
-        expect(typeof sut.custom).to.equal("function");
-    });
 
     it("should return the closest string given a levenshtein distance", function () {
         expect(sut.custom("mundi", days, customComparator)).to.equal(0);
@@ -111,5 +88,4 @@ describe("Custom", function () {
         expect(sut.custom("semadi", days, customComparator)).to.equal(5);
         expect(sut.custom("gromanche", days, customComparator)).to.equal(6);
     });
-
 });

@@ -3,11 +3,9 @@
 *
 * The MIT License (MIT)
 *
-* Copyright (c) 2014 Olivier Scherrer <pode.fr@gmail.com>
+* Copyright (c) 2014-2017 Olivier Scherrer <pode.fr@gmail.com>
 */
 "use strict";
-
-var assert = require("assert");
 
 /**
  * Get the closest number in an array
@@ -21,7 +19,9 @@ function _getClosest(item, array, getDiff) {
     var closest,
         diff;
 
-    assert(Array.isArray(array), "Get closest expects an array as second argument");
+    if (!Array.isArray(array)) {
+        throw new Error("Get closest expects an array as second argument");
+    }
 
     array.forEach(function (comparedItem, comparedItemIndex) {
         var thisDiff = getDiff(comparedItem, item);

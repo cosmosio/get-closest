@@ -77,6 +77,14 @@ var days = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanc
 getClosest.custom("mercure", days, compareLevenshteinDistance); // 2 (mercredi)
 ```
 
+CHANGELOG
+=====
+
+0.0.4 - MARCH 12 2017
+---
+
+* Remove dependency on assert
+
 LICENSE
 =======
 
